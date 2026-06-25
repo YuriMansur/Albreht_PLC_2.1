@@ -1,0 +1,25 @@
+# CODESYS — артефакты компиляции и кэш (регенерируются при сборке)
+*.bootinfo
+*.bootinfo_guids
+*.compileinfo
+*.precompilecache
+
+# Настройки вида IDE (в т.ч. привязанные к имени машины: *-<HOST>.opt)
+*.opt
+
+# Бэкапы / временные файлы CODESYS
+*.bak
+~*.*
+*.~*
+
+# Ручные экспорты рядом с .project (код кладём в src_xml/ скриптом)
+project/*.xml
+
+# Артефакты сборки (.projectarchive и пр.) — генерируются build.py
+out/
+
+# Логи прогонов скриптов
+*.log
+
+# Per-machine настройки путей к CODESYS (у каждой машины свой; шаблон — *.example)
+scripts/env.local.bat

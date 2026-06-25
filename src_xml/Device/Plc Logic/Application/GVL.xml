@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP17 Patch 3" creationDateTime="1970-01-01T00:00:00" />
+  <contentHeader name="liner_cyclic.project" modificationDateTime="1970-01-01T00:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/globalvars" handleUnknown="implementation">
+      <globalVars name="GVL">
+        <variable name="PDI0_CON_24V_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">////////DI////////////
+/////////A11_ICPDAS_ECAT2053_v2////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI1_SAFE_A_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Реле безопасности #1</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI2_SAFE_B_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Реле безопасности #2</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI3_CON_220V_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Цепи управления 220V, вентиляция шкафа, вентиляторы на моторах</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI4_UPS_24V_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Сигнал от ИБП - выходное напряжение ОК</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI5_UPS_ACCU_FL_bad">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Сигнал от ИБП - аккумулятор плохой</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI6_UPS_ACCU_FL_wrk">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Сигнал от ИБП - работа от аккумулятора</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI7_F1_LS_UP">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Аварийный КВ крайнее положение (Верх)</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI8_F1_LS_DN">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Аварийный КВ крайнее положение (Низ)</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI9_F1_LS_BP">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Снятие с концевика вертикальный силовозб.</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI10_F1_PWR_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Силовой контактор</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI11_F1_FAN_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">Вентилятор включен</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI12_F1_T_ST">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">Температура двигателя в норме</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI13_LS_DOOR_left">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> КВ "Дверь открыта левая"	</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDI14_LS_DOOR2_right">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> КВ "Дверь 2 открыта правая"	</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ0_COL_24V">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">/////////DO///////////////
+/////////A13_ICPDAS_ECAT2057P////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ1_COL_RD">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Светосигнальная колонна - красный</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ2_COL_GN">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Светосигнальная колонна - зелёный</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ3_COL_SN">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Светосигнальная колонна - зуммер</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ4_F1_PWR_OO">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Силовое питание -линейный силовозбудит.</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ5_F1_LS_BYP">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Ключ для снятия с концевиков</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PDQ6_F1_FAN_OO">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> Вентилятор вкл/выкл</xhtml>
+          </documentation>
+        </variable>
+        <variable name="PAI_F1_FORCE_A5">
+          <type>
+            <INT />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">////////AI////////////////
+/////////A14_ICPDAS_ECAT2016N////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="ECAT2016N_Status_Underrange">
+          <type>
+            <BOOL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">///////////////////////A14_ICPDAS_ECAT2016N СТАТУСЫ//////////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="ECAT2016N_Status_Overrange">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_Limit_1_1">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_Limit_1_2">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_Limit_2_1">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_Limit_2_2">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_Error">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_TxPDO_State">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="ECAT2016N_Status_TxPDO_Toggle">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="KTSL_Status_1">
+          <type>
+            <UINT />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">////////////////////KTSL_L1000/////////////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="KTSL_Position_1">
+          <type>
+            <UDINT />
+          </type>
+        </variable>
+        <variable name="KTSL_Velocity_1">
+          <type>
+            <DINT />
+          </type>
+        </variable>
+        <variable name="Control_Word_out">
+          <type>
+            <UINT />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">////////////////////Veichi SD700/////////////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="Target_Position_out">
+          <type>
+            <DINT />
+          </type>
+        </variable>
+        <variable name="Target_Velocity_out">
+          <type>
+            <DINT />
+          </type>
+        </variable>
+        <variable name="Status_Word_in">
+          <type>
+            <UINT />
+          </type>
+        </variable>
+        <variable name="Actual_Position_in">
+          <type>
+            <DINT />
+          </type>
+        </variable>
+        <variable name="Velocity_actual_value_in">
+          <type>
+            <DINT />
+          </type>
+        </variable>
+        <variable name="GVLlrMoveAbsolutePosition">
+          <type>
+            <LREAL />
+          </type>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">//////////////////////////////////////////////////////////////////</xhtml>
+          </documentation>
+        </variable>
+        <variable name="bAlarm">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="breset_btn">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="bfbJogJogForward">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="bfbJogJogBackward">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="bfbFollowVelocityOn">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <variable name="bMainDelay">
+          <type>
+            <BOOL />
+          </type>
+        </variable>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Name="qualified_only" Value="" />
+            </Attributes>
+          </data>
+        </addData>
+      </globalVars>
+    </data>
+  </addData>
+</project>

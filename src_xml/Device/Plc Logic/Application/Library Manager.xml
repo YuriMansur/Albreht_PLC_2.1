@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP17 Patch 3" creationDateTime="1970-01-01T00:00:00" />
+  <contentHeader name="liner_cyclic.project" modificationDateTime="1970-01-01T00:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
+      <Libraries>
+        <Library Name="#SM3_Robotics" Namespace="SM3_Robotics" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Robotics, 4.12.0.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#SM3_Robotics_Visu" Namespace="SM3_Robotics_Visu" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Robotics_Visu, 4.10.0.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#SM3_Transformation" Namespace="TRAFO" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Transformation, 4.12.0.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#Standard" Namespace="Standard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Standard, * (System)" />
+        <Library Name="#BreakpointLogging" Namespace="BPLog" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="Breakpoint Logging Functions, 3.5.5.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#IODrvEtherCAT" Namespace="IoDrvEthercatLib" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="IoDrvEtherCAT, 4.1.0.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#SML_Basic" Namespace="SML" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SML_Basic, * (3S - Smart Software Solutions GmbH)" />
+        <Library Name="SML_Drive_ETC, 4.7.0.0 (3S - Smart Software Solutions GmbH)" Namespace="SML_Drive_ETC" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" />
+        <Library Name="Util, 3.5.19.0 (System)" Namespace="Util" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false">
+          <Parameters>
+            <Parameter Name="IBLOCKSIZE" Value="22800" />
+          </Parameters>
+        </Library>
+        <Library Name="#IecSfc" Namespace="IecSfc" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="IecSfc, 4.1.0.0 (System)" />
+        <Library Name="#Analyzation" Namespace="Analyzation" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="Analyzation, 4.1.0.0 (System)">
+          <Parameters>
+            <Parameter Name="TABLE_UPPER_BOUND" Value="15" />
+            <Parameter Name="STRING_LENGTH_EXP" Value="255" />
+            <Parameter Name="STRING_LENGTH_ADDRESS" Value="20" />
+            <Parameter Name="STRING_LENGTH_COMMENT" Value="255" />
+            <Parameter Name="STRING_LENGTH_OUTSTRING" Value="255" />
+            <Parameter Name="TABLE_SHOW_VALID_ITEMS" Value="FALSE" />
+          </Parameters>
+        </Library>
+        <Library Name="#IecVarAccess" Namespace="IecVarAccessLibrary" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="IecVarAccess, 3.3.1.20 (System)" />
+        <Library Name="#System_VisuElems" Namespace="VisuElems" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElems, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemMeter" Namespace="VisuElemMeter" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemMeter, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsSpecialControls" Namespace="VisuElemsSpecialControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsSpecialControls, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsWinControls" Namespace="VisuElemsWinControls" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsWinControls, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemTextEditor" Namespace="VisuElemTextEditor" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTextEditor, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemTrace" Namespace="VisuElemTrace" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemTrace, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuNativeControl" Namespace="VisuNativeControl" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuNativeControl, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsAlarm" Namespace="VisuElemsAlarm" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsAlarm, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemCamDisplayer" Namespace="VisuElemCamDisplayer" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemCamDisplayer, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElem3DPath" Namespace="VisuElem3DPath" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElem3DPath, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemsDateTime" Namespace="VisuElemsDateTime" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemsDateTime, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#System_VisuElemXYChart" Namespace="VisuElemXYChart" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuElemXYChart, 4.1.0.0 (System)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#system_visuinputs" Namespace="visuinputs" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="visuinputs, 4.1.0.0 (system)" ResolverGuid="2717eb6a-dd07-4c66-8d8d-cacebd7b18ae" />
+        <Library Name="#VisuDialogs" Namespace="VisuDialogs" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="VisuDialogs, * (System)" />
+        <Library Name="ControlLoopLibrary, 1.0.0.0 (3S - Smart Software Solutions GmbH)" Namespace="Ctrl" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" />
+        <Library Name="#VisuTrendStorageAccess" Namespace="VisuTrendStorageAccess" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="VisuTrendStorageAccess, 3.5.4.0 (System)" />
+        <Library Name="#SM3_Basic" Namespace="SM3_Basic" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Basic, 4.12.0.0 (3S - Smart Software Solutions GmbH)">
+          <Parameters>
+            <Parameter Name="GC_SMC_FILE_MAXCAMEL" Value="128" />
+            <Parameter Name="GC_SMC_FILE_MAXCAMTAP" Value="128" />
+            <Parameter Name="GC_SMC_SET_VALUE_BUFFER_SIZE_BASE2_EXP" Value="9" />
+            <Parameter Name="GC_SMC_ACT_VALUE_BUFFER_SIZE_BASE2_EXP" Value="4" />
+            <Parameter Name="GC_SMC_DIGITAL_CAM_SWITCH_NUM_TRACKS" Value="32" />
+            <Parameter Name="GC_SMC_DIGITAL_CAM_SWITCH_MAX_SWITCHES" Value="8" />
+            <Parameter Name="GC_SMC_DIGITAL_CAM_SWITCH_MAX_TOGGLE_EVENTS_BASE2_EXP" Value="3" />
+          </Parameters>
+        </Library>
+        <Library Name="#SM3_CNC" Namespace="SM3_CNC" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_CNC, 4.12.0.0 (3S - Smart Software Solutions GmbH)">
+          <Parameters>
+            <Parameter Name="MAX_SUBPROGRAMS" Value="512" />
+            <Parameter Name="MAX_SUBPROGRAM_PARAMS" Value="21" />
+            <Parameter Name="MAX_SUBPROGRAM_NESTING_DEPTH" Value="14" />
+            <Parameter Name="EVAL_STACK_SIZE" Value="100" />
+            <Parameter Name="MAX_GWORDS_PER_SENTENCE" Value="128" />
+            <Parameter Name="SENTENCE_BUFFER_SIZE" Value="100" />
+          </Parameters>
+        </Library>
+        <Library Name="#IoStandard" Namespace="IoStandard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="true" DefaultResolution="IoStandard, 3.5.15.0 (System)" />
+        <Library Name="#3SLicense" Namespace="_3S_LICENSE" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="3SLicense, 0.0.0.0 (3S - Smart Software Solutions GmbH)" ResolverGuid="97c3b452-d9fa-4ac2-9d0c-3d420aa6d95b" />
+        <Library Name="#XJ_System" Namespace="XJ_System" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="XJ_System, 1.0.1.2 (Xinje)" />
+        <Library Name="CmpEventMgr, * (System)" Namespace="CmpEventMgr" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" />
+        <Library Name="Component Manager, * (System)" Namespace="Component_Manager" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" />
+        <Library Name="CmpApp, * (System)" Namespace="CmpApp" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" />
+        <Library Name="CmpIecTask, * (System)" Namespace="CmpIecTask" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" />
+        <Library Name="BASIC, 3.3.4.0 (OSCAT)" Namespace="OSCAT_BASIC" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" />
+        <Library Name="#SM3_Drive_ETC" Namespace="SM3_Drive_ETC" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Drive_ETC, 4.9.0.0 (3S - Smart Software Solutions GmbH)">
+          <Parameters>
+            <Parameter Name="SDO_TIMEOUT_MS" Value="10000" />
+            <Parameter Name="IDN_READ_WRITE_TIMEOUT_MS" Value="10000" />
+            <Parameter Name="IDN_RESET_TIMEOUT_MS" Value="60000" />
+            <Parameter Name="IDN_REFERENCE_TIMEOUT_MS" Value="16#FFFFFFFF" />
+          </Parameters>
+        </Library>
+        <Library Name="#SM3_Drive_ETC_DS402_CyclicSync" Namespace="SM3_Drive_ETC_DS402_CyclicSync" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Drive_ETC_DS402_CyclicSync, 4.6.1.0 (3S - Smart Software Solutions GmbH)" />
+        <Library Name="#SM3_Basic_Visu" Namespace="SM3_Basic_Visu" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_Basic_Visu, 4.19.0.0 (CODESYS)">
+          <Parameters>
+            <Parameter Name="MAX_CAM_POINTS" Value="1000" />
+          </Parameters>
+        </Library>
+        <Library Name="#SM3_CamBuilder" Namespace="SMCB" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="SM3_CamBuilder, 4.19.0.0 (CODESYS)">
+          <Parameters>
+            <Parameter Name="MAX_CAM_SEGMENT_COUNT" Value="100" />
+          </Parameters>
+        </Library>
+        <addData />
+      </Libraries>
+    </data>
+  </addData>
+</project>
