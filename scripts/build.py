@@ -111,7 +111,9 @@ def _count_errors():
     for m in msgs:
         text = getattr(m, "text", "") or ""
         low = text.lower()
-        is_compile = ("компил" in low) or ("compil" in low)
+        # Итоговая строка: рус. "Компиляция завершена -- N ошибок" ИЛИ
+        # англ. "Build complete -- N errors" (англ. локаль: 'compil' там НЕТ).
+        is_compile = ("компил" in low) or ("compil" in low) or ("build complete" in low)
         if not is_compile:
             continue
         if not any(k in low for k in _DONE_KEYS):

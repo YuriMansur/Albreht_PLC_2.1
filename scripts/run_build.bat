@@ -45,10 +45,16 @@ echo ----------------------------------------------------------
 echo.
 
 rem --- ВЕРДИКТ ПО ЛОГУ ---
-rem Метка severity 'Error:' в выводе ScriptEngine — ASCII и регистрозависима,
-rem поэтому ожидаемые пропуски железа 'IMPORT ERROR:' (заглавными) НЕ считаются.
+rem Считаем ТОЛЬКО ошибки компиляции. Метка severity 'Error:' — ASCII и
+rem регистрозависима, поэтому пропуски железа 'IMPORT ERROR:' (заглавными) НЕ
+rem считаются. Дополнительно ИСКЛЮЧАЕМ 'Library Manager: Error:' — это ошибки
+rem РАЗРЕШЕНИЯ библиотек, а не компиляции: реальные ошибки компилятора идут с
+rem префиксом 'Build: Error:' и считаются. Если библиотека реально нужна, но не
+rem стоит — компилятор сам выдаст 'Build: Error: Unknown type ...'. А при чистой
+rem компиляции (0 ошибок) нерешённые либы безвредны и не должны валить сборку и
+rem удалять архив. Строки остаются видны в build.log (выше через type).
 set "ERRCOUNT=0"
-for /f %%C in ('findstr /C:"Error:" build.log ^| find /c /v ""') do set "ERRCOUNT=%%C"
+for /f %%C in ('findstr /C:"Error:" build.log ^| findstr /V /C:"Library Manager:" ^| find /c /v ""') do set "ERRCOUNT=%%C"
 
 rem Падение самого скрипта тоже = провал.
 findstr /C:"BUILD FAILED" build.log >nul && set "RC=1"
