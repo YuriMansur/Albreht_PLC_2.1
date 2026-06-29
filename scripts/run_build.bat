@@ -44,27 +44,28 @@ type build.log
 echo ----------------------------------------------------------
 echo.
 
-rem --- ВЕРДИКТ ПО ЛОГУ ---
-rem Считаем ТОЛЬКО ошибки компиляции. Метка severity 'Error:' — ASCII и
-rem регистрозависима, поэтому пропуски железа 'IMPORT ERROR:' (заглавными) НЕ
-rem считаются. Дополнительно ИСКЛЮЧАЕМ 'Library Manager: Error:' — это ошибки
-rem РАЗРЕШЕНИЯ библиотек, а не компиляции: реальные ошибки компилятора идут с
-rem префиксом 'Build: Error:' и считаются. Если библиотека реально нужна, но не
-rem стоит — компилятор сам выдаст 'Build: Error: Unknown type ...'. А при чистой
-rem компиляции (0 ошибок) нерешённые либы безвредны и не должны валить сборку и
-rem удалять архив. Строки остаются видны в build.log (выше через type).
+rem --- ВЕРДИКТ ПО ЛОГУ (локале-независимо) ---
+rem Считаем ТОЛЬКО ошибки компиляции — по severity 'Error:' С КОДОМ:
+rem 'Error: C<цифра>' (компилятор) или 'Error: SA<цифра>' (доп. проверки кода).
+rem У CODESYS метка 'Error:' и коды (C90, C77, SA0...) английские/нейтральные на
+rem ЛЮБОЙ локали; локализуется только категория и текст сообщения. Поэтому:
+rem   - 'Library Manager: Error:' / рус. 'Менеджер библиотек: Error: Невозможно...'
+rem     (РАЗРЕШЕНИЕ библиотек, без кода) НЕ считаются;
+rem   - 'IMPORT ERROR:' (пропуски железа, заглавными) НЕ считаются;
+rem реальные ошибки компилятора всегда с кодом ('Build/Сборка: Error: C90: ...').
+rem Если нужная библиотека не стоит — компилятор сам выдаст 'Error: C<код>'.
 set "ERRCOUNT=0"
-for /f %%C in ('findstr /C:"Error:" build.log ^| findstr /V /C:"Library Manager:" ^| find /c /v ""') do set "ERRCOUNT=%%C"
+for /f %%C in ('findstr /R /C:"Error: C[0-9]" /C:"Error: SA[0-9]" build.log ^| find /c /v ""') do set "ERRCOUNT=%%C"
 
 rem Падение самого скрипта тоже = провал.
 findstr /C:"BUILD FAILED" build.log >nul && set "RC=1"
 
 if not "!ERRCOUNT!"=="0" (
-  echo [run_build] BUILD FAILED: !ERRCOUNT! line^(s^) with Error ^(see build.log^)
+  echo [run_build] BUILD FAILED: !ERRCOUNT! compile error^(s^) ^(see build.log^)
   if exist "%ARCHIVE%" del /q "%ARCHIVE%"
   set "RC=1"
 ) else (
-  echo [run_build] compiled without Error-level messages
+  echo [run_build] no compile errors
   if exist "%ARCHIVE%" echo [run_build] archive ready: %ARCHIVE%
 )
 
