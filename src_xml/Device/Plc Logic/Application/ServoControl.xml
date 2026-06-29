@@ -598,109 +598,16 @@
           </localVars>
         </interface>
         <actions>
-          <action name="Power">
+          <action name="Prednagruzka">
             <body>
               <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">IF Y_Axis.bCommunication THEN
-// Функциональный блок влючения
-fbPower(
-Axis:= Y_Axis ,
-Enable:= TRUE,
-bRegulatorOn:= bRegulatorOn,
-bDriveStart:= bDriveStart,
-Status=&gt; ,
-bRegulatorRealState=&gt; ,
-bDriveStartRealState=&gt; ,
-Busy=&gt; Busy,
-Error=&gt; Error,
-ErrorID=&gt; );
-END_IF
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">//IF NOT ReadFBErrorError AND fbPower.Status THEN
 
-r_trig1(CLK := GVL.bAlarm OR SafetyChain.bHomePosition);
-IF btn AND (NOT GVL.bAlarm) AND (NOT SafetyChain.bHomePosition) THEN
-	bRegulatorOn := TRUE;
-	bDriveStart := TRUE;
-	ELSIF (NOT btn) OR (GVL.bAlarm) OR (SafetyChain.bHomePosition) THEN
-	bRegulatorOn := FALSE;
-	bDriveStart := FALSE;
-	
-END_IF
-
-IF r_trig1.Q THEN
-	btn := FALSE;
-END_IF
-
-
-IF fbPower.Status THEN
-	//bMoveRelativeON := TRUE;
-	//bMoveAbsoluteON := TRUE;
-	ELSE
-	//bMoveRelativeON := FALSE;
-	//bMoveAbsoluteON := FALSE;
-END_IF</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Stop">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">//Функциональный блок останова
-fbStop(
-Axis:= Y_Axis,
-Execute:= bStop,
-Deceleration:= ,
-Jerk:= ,
-Done=&gt; ,
-Busy=&gt; ,
-Error=&gt; ,
-ErrorID=&gt; );</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Reset">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">
-	rs(SET := GVL.breset_btn, RESET1 := tof.Q);
-	ton(IN := ReadFBErrorError AND rs.Q1, PT := T#0.5S , ET =&gt; ET_TON);
-	tof(IN := bFlag ,PT := T#0.5S, ET =&gt;ET_TOF);
-	IF ton.Q THEN
-		btn := FALSE;
-		bReset := TRUE;
-		bFlag := TRUE;
-	END_IF
-	IF tof.Q THEN
-		btn := TRUE;
-		bReset := FALSE;
-		bFlag := FALSE;
-		gvl.breset_btn := FALSE;
-END_IF
-
-// Фунциональный блок RESET
-fbReset (
-Axis:= Y_Axis ,
-Execute:= bReset,
-Done=&gt; ,
-Busy=&gt; ,
-Error=&gt; ,
-ErrorID=&gt; );</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Jog">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">IF NOT ReadFBErrorError AND fbPower.Status THEN
-
-
-
-fbJog(
+	RS_2(SET:= bBtnPrednagruzkaON, RESET1:= out_FORCE_TMP &gt; rSetMaxPrednagruzka_USTAVKA, Q1=&gt; );
+fbJog_0(
 	Axis:= Y_Axis, 
-	JogForward:= GVL.bfbJogJogForward,   // против часовой (+ ServoControl.LrPosition_readActPos)  ВНИЗ
-	JogBackward:= GVL.bfbJogJogBackward, // по часовой (- ServoControl.LrPosition_readActPos) ВВЕРХ
+	JogForward:= RS_2.Q1,   // против часовой (+ ServoControl.LrPosition_readActPos)  ВНИЗ
+	JogBackward:= , // по часовой (- ServoControl.LrPosition_readActPos) ВВЕРХ
 	Velocity:= lrfbJogVelocity, 
 	Acceleration:= lrfbJogAcceleration, 
 	Deceleration:= lrfbJogDeceleration, 
@@ -709,13 +616,80 @@ fbJog(
 	CommandAborted=&gt; , 
 	Error=&gt; , 
 	ErrorId=&gt; );
-	
-	
 
-	END_IF
 
+	//END_IF
+</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Halt">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">IF NOT ReadFBErrorError AND fbPower.Status THEN
+fbHalt(                            // Остановка с регулируемым замедлением  
+	Axis:= Y_Axis, 
+	Execute:= bfbHaltOn, 
+	Deceleration:= lrfbHaltDeceleration, 
+	Jerk:= 100, 
+	Done=&gt; bfbHaltDone, 
+	Busy=&gt; , 
+	CommandAborted=&gt; , 
+	Error=&gt; , 
+	ErrorID=&gt; );
+END_IF</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Errors">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">fbReadFBError(
+	Axis:= Y_Axis, 
+	bEnable:= TRUE, 
+	bValid=&gt; ReadFBErrorValid, 
+	bBusy=&gt; ReadFBErrorBusy, 
+	bFBError=&gt; ReadFBErrorError, //ОШИБКА ПРИВОДА
+	nFBErrorID=&gt; ReadFBErrorErrorID, 
+	pbyErrorInstance=&gt; , 
+	strErrorInstance=&gt; , 
+	tTimeStamp=&gt; ReadFBErrorTimestamp);
 	
-	</xhtml>
+	ClearFBError_r_trig(CLK := bClearFBError);   // очистка аварий
+IF ClearFBError_r_trig.Q THEN
+	SMC_ClearFBError(pDrive:= ADR(Y_Axis));
+END_IF</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Status">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">fbReadStatus(
+	Axis:= Y_Axis, 
+	Enable:= TRUE, 
+	Valid=&gt; , 
+	Busy=&gt; , 
+	Error=&gt; , 
+	ErrorID=&gt; , 
+	Disabled=&gt; , 
+	Errorstop=&gt; , 
+	Stopping=&gt; , 
+	StandStill=&gt; bStandStill, 
+	DiscreteMotion=&gt; , 
+	ContinuousMotion=&gt; , 
+	SynchronizedMotion=&gt; , 
+	Homing=&gt; , 
+	ConstantVelocity=&gt; , 
+	Accelerating=&gt; , 
+	Decelerating=&gt; , 
+	FBErrorOccured=&gt; );
+	
+	
+	//DriveStatus := Y_Axis.nAxisState;  // Статус привода</xhtml>
               </ST>
             </body>
             <addData />
@@ -884,86 +858,17 @@ _AM := ustavka_H * 2;
             </body>
             <addData />
           </action>
-          <action name="Status">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">fbReadStatus(
-	Axis:= Y_Axis, 
-	Enable:= TRUE, 
-	Valid=&gt; , 
-	Busy=&gt; , 
-	Error=&gt; , 
-	ErrorID=&gt; , 
-	Disabled=&gt; , 
-	Errorstop=&gt; , 
-	Stopping=&gt; , 
-	StandStill=&gt; bStandStill, 
-	DiscreteMotion=&gt; , 
-	ContinuousMotion=&gt; , 
-	SynchronizedMotion=&gt; , 
-	Homing=&gt; , 
-	ConstantVelocity=&gt; , 
-	Accelerating=&gt; , 
-	Decelerating=&gt; , 
-	FBErrorOccured=&gt; );
-	
-	
-	//DriveStatus := Y_Axis.nAxisState;  // Статус привода</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Errors">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">fbReadFBError(
-	Axis:= Y_Axis, 
-	bEnable:= TRUE, 
-	bValid=&gt; ReadFBErrorValid, 
-	bBusy=&gt; ReadFBErrorBusy, 
-	bFBError=&gt; ReadFBErrorError, //ОШИБКА ПРИВОДА
-	nFBErrorID=&gt; ReadFBErrorErrorID, 
-	pbyErrorInstance=&gt; , 
-	strErrorInstance=&gt; , 
-	tTimeStamp=&gt; ReadFBErrorTimestamp);
-	
-	ClearFBError_r_trig(CLK := bClearFBError);   // очистка аварий
-IF ClearFBError_r_trig.Q THEN
-	SMC_ClearFBError(pDrive:= ADR(Y_Axis));
-END_IF</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Halt">
+          <action name="Jog">
             <body>
               <ST>
                 <xhtml xmlns="http://www.w3.org/1999/xhtml">IF NOT ReadFBErrorError AND fbPower.Status THEN
-fbHalt(                            // Остановка с регулируемым замедлением  
-	Axis:= Y_Axis, 
-	Execute:= bfbHaltOn, 
-	Deceleration:= lrfbHaltDeceleration, 
-	Jerk:= 100, 
-	Done=&gt; bfbHaltDone, 
-	Busy=&gt; , 
-	CommandAborted=&gt; , 
-	Error=&gt; , 
-	ErrorID=&gt; );
-END_IF</xhtml>
-              </ST>
-            </body>
-            <addData />
-          </action>
-          <action name="Prednagruzka">
-            <body>
-              <ST>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">//IF NOT ReadFBErrorError AND fbPower.Status THEN
 
-	RS_2(SET:= bBtnPrednagruzkaON, RESET1:= out_FORCE_TMP &gt; rSetMaxPrednagruzka_USTAVKA, Q1=&gt; );
-fbJog_0(
+
+
+fbJog(
 	Axis:= Y_Axis, 
-	JogForward:= RS_2.Q1,   // против часовой (+ ServoControl.LrPosition_readActPos)  ВНИЗ
-	JogBackward:= , // по часовой (- ServoControl.LrPosition_readActPos) ВВЕРХ
+	JogForward:= GVL.bfbJogJogForward,   // против часовой (+ ServoControl.LrPosition_readActPos)  ВНИЗ
+	JogBackward:= GVL.bfbJogJogBackward, // по часовой (- ServoControl.LrPosition_readActPos) ВВЕРХ
 	Velocity:= lrfbJogVelocity, 
 	Acceleration:= lrfbJogAcceleration, 
 	Deceleration:= lrfbJogDeceleration, 
@@ -972,10 +877,105 @@ fbJog_0(
 	CommandAborted=&gt; , 
 	Error=&gt; , 
 	ErrorId=&gt; );
+	
+	
+
+	END_IF
+
+	
+	</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Reset">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">
+	rs(SET := GVL.breset_btn, RESET1 := tof.Q);
+	ton(IN := ReadFBErrorError AND rs.Q1, PT := T#0.5S , ET =&gt; ET_TON);
+	tof(IN := bFlag ,PT := T#0.5S, ET =&gt;ET_TOF);
+	IF ton.Q THEN
+		btn := FALSE;
+		bReset := TRUE;
+		bFlag := TRUE;
+	END_IF
+	IF tof.Q THEN
+		btn := TRUE;
+		bReset := FALSE;
+		bFlag := FALSE;
+		gvl.breset_btn := FALSE;
+END_IF
+
+// Фунциональный блок RESET
+fbReset (
+Axis:= Y_Axis ,
+Execute:= bReset,
+Done=&gt; ,
+Busy=&gt; ,
+Error=&gt; ,
+ErrorID=&gt; );</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Stop">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">//Функциональный блок останова
+fbStop(
+Axis:= Y_Axis,
+Execute:= bStop,
+Deceleration:= ,
+Jerk:= ,
+Done=&gt; ,
+Busy=&gt; ,
+Error=&gt; ,
+ErrorID=&gt; );</xhtml>
+              </ST>
+            </body>
+            <addData />
+          </action>
+          <action name="Power">
+            <body>
+              <ST>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">IF Y_Axis.bCommunication THEN
+// Функциональный блок влючения
+fbPower(
+Axis:= Y_Axis ,
+Enable:= TRUE,
+bRegulatorOn:= bRegulatorOn,
+bDriveStart:= bDriveStart,
+Status=&gt; ,
+bRegulatorRealState=&gt; ,
+bDriveStartRealState=&gt; ,
+Busy=&gt; Busy,
+Error=&gt; Error,
+ErrorID=&gt; );
+END_IF
+
+r_trig1(CLK := GVL.bAlarm OR SafetyChain.bHomePosition);
+IF btn AND (NOT GVL.bAlarm) AND (NOT SafetyChain.bHomePosition) THEN
+	bRegulatorOn := TRUE;
+	bDriveStart := TRUE;
+	ELSIF (NOT btn) OR (GVL.bAlarm) OR (SafetyChain.bHomePosition) THEN
+	bRegulatorOn := FALSE;
+	bDriveStart := FALSE;
+	
+END_IF
+
+IF r_trig1.Q THEN
+	btn := FALSE;
+END_IF
 
 
-	//END_IF
-</xhtml>
+IF fbPower.Status THEN
+	//bMoveRelativeON := TRUE;
+	//bMoveAbsoluteON := TRUE;
+	ELSE
+	//bMoveRelativeON := FALSE;
+	//bMoveAbsoluteON := FALSE;
+END_IF</xhtml>
               </ST>
             </body>
             <addData />

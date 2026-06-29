@@ -493,7 +493,7 @@
                 </data>
               </addData>
             </vendorElement>
-            <contact localId="42" negated="false" storage="none" edge="none">
+            <contact localId="43" negated="false" storage="none" edge="none">
               <position x="0" y="0" />
               <connectionPointIn>
                 <connection refLocalId="0" />
@@ -501,15 +501,15 @@
               <connectionPointOut />
               <variable>GVL.PDI7_F1_LS_UP</variable>
             </contact>
-            <contact localId="43" negated="false" storage="none" edge="none">
+            <contact localId="44" negated="false" storage="none" edge="none">
               <position x="0" y="0" />
               <connectionPointIn>
-                <connection refLocalId="42" />
+                <connection refLocalId="43" />
               </connectionPointIn>
               <connectionPointOut />
               <variable>FALSE</variable>
             </contact>
-            <contact localId="44" negated="false" storage="none" edge="none">
+            <contact localId="45" negated="false" storage="none" edge="none">
               <position x="0" y="0" />
               <connectionPointIn>
                 <connection refLocalId="0" />
@@ -517,205 +517,21 @@
               <connectionPointOut />
               <variable>GVL.PDI8_F1_LS_DN</variable>
             </contact>
-            <contact localId="45" negated="false" storage="none" edge="none">
+            <contact localId="46" negated="false" storage="none" edge="none">
               <position x="0" y="0" />
               <connectionPointIn>
-                <connection refLocalId="44" />
+                <connection refLocalId="45" />
               </connectionPointIn>
               <connectionPointOut />
               <variable>FALSE</variable>
             </contact>
-            <contact localId="48" negated="false" storage="none" edge="none">
-              <position x="0" y="0" />
-              <connectionPointIn>
-                <connection refLocalId="0" />
-              </connectionPointIn>
-              <connectionPointOut />
-              <variable>GVL.bMainDelay</variable>
-            </contact>
-            <inVariable localId="49">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>ServoControl.mm</expression>
-            </inVariable>
-            <inVariable localId="50">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>950</expression>
-            </inVariable>
-            <block localId="47" typeName="GE">
-              <position x="0" y="0" />
-              <inputVariables>
-                <variable formalParameter="EN">
-                  <connectionPointIn>
-                    <connection refLocalId="48" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In2">
-                  <connectionPointIn>
-                    <connection refLocalId="49" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In3">
-                  <connectionPointIn>
-                    <connection refLocalId="50" />
-                  </connectionPointIn>
-                </variable>
-              </inputVariables>
-              <inOutVariables />
-              <outputVariables>
-                <variable formalParameter="Out1">
-                  <connectionPointOut />
-                </variable>
-              </outputVariables>
-              <addData>
-                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
-                  <CallType xmlns="">operator</CallType>
-                </data>
-              </addData>
-            </block>
-            <contact localId="52" negated="false" storage="none" edge="none">
-              <position x="0" y="0" />
-              <connectionPointIn>
-                <connection refLocalId="0" />
-              </connectionPointIn>
-              <connectionPointOut />
-              <variable>GVL.bMainDelay</variable>
-            </contact>
-            <inVariable localId="53">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>ServoControl.mm</expression>
-            </inVariable>
-            <inVariable localId="54">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>500</expression>
-            </inVariable>
-            <block localId="51" typeName="LE">
-              <position x="0" y="0" />
-              <inputVariables>
-                <variable formalParameter="EN">
-                  <connectionPointIn>
-                    <connection refLocalId="52" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In2">
-                  <connectionPointIn>
-                    <connection refLocalId="53" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In3">
-                  <connectionPointIn>
-                    <connection refLocalId="54" />
-                  </connectionPointIn>
-                </variable>
-              </inputVariables>
-              <inOutVariables />
-              <outputVariables>
-                <variable formalParameter="Out1">
-                  <connectionPointOut />
-                </variable>
-              </outputVariables>
-              <addData>
-                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
-                  <CallType xmlns="">operator</CallType>
-                </data>
-              </addData>
-            </block>
-            <contact localId="56" negated="false" storage="none" edge="none">
-              <position x="0" y="0" />
-              <connectionPointIn>
-                <connection refLocalId="0" />
-              </connectionPointIn>
-              <connectionPointOut />
-              <variable>GVL.bMainDelay</variable>
-            </contact>
-            <inVariable localId="57">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>Sensors.out_FORCE</expression>
-            </inVariable>
-            <inVariable localId="58">
-              <position x="0" y="0" />
-              <connectionPointOut />
-              <expression>500</expression>
-            </inVariable>
-            <block localId="55" typeName="GE">
-              <position x="0" y="0" />
-              <inputVariables>
-                <variable formalParameter="EN">
-                  <connectionPointIn>
-                    <connection refLocalId="56" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In2">
-                  <connectionPointIn>
-                    <connection refLocalId="57" />
-                  </connectionPointIn>
-                </variable>
-                <variable formalParameter="In3">
-                  <connectionPointIn>
-                    <connection refLocalId="58" />
-                  </connectionPointIn>
-                </variable>
-              </inputVariables>
-              <inOutVariables />
-              <outputVariables>
-                <variable formalParameter="Out1">
-                  <connectionPointOut />
-                </variable>
-              </outputVariables>
-              <addData>
-                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
-                  <CallType xmlns="">operator</CallType>
-                </data>
-              </addData>
-            </block>
-            <vendorElement localId="46">
-              <position x="0" y="0" />
-              <alternativeText>
-                <xhtml xmlns="http://www.w3.org/1999/xhtml">ParallelBranch</xhtml>
-              </alternativeText>
-              <addData>
-                <data name="http://www.3s-software.com/plcopenxml/ldparallelbranch" handleUnknown="implementation">
-                  <ParallelBranch mode="sce" xmlns="">
-                    <BranchInput>
-                      <connectionPointIn>
-                        <connection refLocalId="0" />
-                      </connectionPointIn>
-                    </BranchInput>
-                    <BranchTrees>
-                      <Tree>
-                        <connectionPointIn>
-                          <connection refLocalId="47" formalParameter="Out1" />
-                        </connectionPointIn>
-                      </Tree>
-                      <Tree>
-                        <connectionPointIn>
-                          <connection refLocalId="51" formalParameter="Out1" />
-                        </connectionPointIn>
-                      </Tree>
-                      <Tree>
-                        <connectionPointIn>
-                          <connection refLocalId="55" formalParameter="Out1" />
-                        </connectionPointIn>
-                      </Tree>
-                    </BranchTrees>
-                  </ParallelBranch>
-                </data>
-              </addData>
-            </vendorElement>
-            <block localId="41" typeName="R_TRIG" instanceName="R_TRIG_0">
+            <block localId="42" typeName="R_TRIG" instanceName="R_TRIG_0">
               <position x="0" y="0" />
               <inputVariables>
                 <variable formalParameter="CLK">
                   <connectionPointIn>
-                    <connection refLocalId="43" />
-                    <connection refLocalId="45" />
-                    <connection refLocalId="47" />
-                    <connection refLocalId="51" />
-                    <connection refLocalId="55" />
+                    <connection refLocalId="44" />
+                    <connection refLocalId="46" />
                   </connectionPointIn>
                 </variable>
               </inputVariables>
@@ -731,14 +547,195 @@
                 </data>
               </addData>
             </block>
-            <coil localId="59" negated="false" storage="set">
+            <coil localId="47" negated="false" storage="set">
               <position x="0" y="0" />
               <connectionPointIn>
-                <connection refLocalId="41" formalParameter="Q" />
+                <connection refLocalId="42" formalParameter="Q" />
               </connectionPointIn>
               <connectionPointOut />
               <variable>bHomePosition</variable>
             </coil>
+            <contact localId="49" negated="false" storage="none" edge="none">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="42" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>GVL.bMainDelay</variable>
+            </contact>
+            <inVariable localId="50">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>ServoControl.mm</expression>
+            </inVariable>
+            <inVariable localId="51">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>950</expression>
+            </inVariable>
+            <block localId="48" typeName="GE">
+              <position x="0" y="0" />
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <connection refLocalId="49" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In2">
+                  <connectionPointIn>
+                    <connection refLocalId="50" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In3">
+                  <connectionPointIn>
+                    <connection refLocalId="51" />
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables />
+              <outputVariables>
+                <variable formalParameter="Out1">
+                  <connectionPointOut />
+                </variable>
+              </outputVariables>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
+                  <CallType xmlns="">operator</CallType>
+                </data>
+              </addData>
+            </block>
+            <contact localId="53" negated="false" storage="none" edge="none">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="42" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>GVL.bMainDelay</variable>
+            </contact>
+            <inVariable localId="54">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>ServoControl.mm</expression>
+            </inVariable>
+            <inVariable localId="55">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>500</expression>
+            </inVariable>
+            <block localId="52" typeName="LE">
+              <position x="0" y="0" />
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <connection refLocalId="53" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In2">
+                  <connectionPointIn>
+                    <connection refLocalId="54" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In3">
+                  <connectionPointIn>
+                    <connection refLocalId="55" />
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables />
+              <outputVariables>
+                <variable formalParameter="Out1">
+                  <connectionPointOut />
+                </variable>
+              </outputVariables>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
+                  <CallType xmlns="">operator</CallType>
+                </data>
+              </addData>
+            </block>
+            <contact localId="57" negated="false" storage="none" edge="none">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="42" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>GVL.bMainDelay</variable>
+            </contact>
+            <inVariable localId="58">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>Sensors.out_FORCE</expression>
+            </inVariable>
+            <inVariable localId="59">
+              <position x="0" y="0" />
+              <connectionPointOut />
+              <expression>500</expression>
+            </inVariable>
+            <block localId="56" typeName="GE">
+              <position x="0" y="0" />
+              <inputVariables>
+                <variable formalParameter="EN">
+                  <connectionPointIn>
+                    <connection refLocalId="57" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In2">
+                  <connectionPointIn>
+                    <connection refLocalId="58" />
+                  </connectionPointIn>
+                </variable>
+                <variable formalParameter="In3">
+                  <connectionPointIn>
+                    <connection refLocalId="59" />
+                  </connectionPointIn>
+                </variable>
+              </inputVariables>
+              <inOutVariables />
+              <outputVariables>
+                <variable formalParameter="Out1">
+                  <connectionPointOut />
+                </variable>
+              </outputVariables>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdcalltype" handleUnknown="implementation">
+                  <CallType xmlns="">operator</CallType>
+                </data>
+              </addData>
+            </block>
+            <vendorElement localId="41">
+              <position x="0" y="0" />
+              <alternativeText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">ParallelBranch</xhtml>
+              </alternativeText>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/ldparallelbranch" handleUnknown="implementation">
+                  <ParallelBranch mode="sce" xmlns="">
+                    <BranchInput>
+                      <connectionPointIn>
+                        <connection refLocalId="42" formalParameter="Q" />
+                      </connectionPointIn>
+                    </BranchInput>
+                    <BranchTrees>
+                      <Tree>
+                        <connectionPointIn>
+                          <connection refLocalId="48" formalParameter="Out1" />
+                        </connectionPointIn>
+                      </Tree>
+                      <Tree>
+                        <connectionPointIn>
+                          <connection refLocalId="52" formalParameter="Out1" />
+                        </connectionPointIn>
+                      </Tree>
+                      <Tree>
+                        <connectionPointIn>
+                          <connection refLocalId="56" formalParameter="Out1" />
+                        </connectionPointIn>
+                      </Tree>
+                    </BranchTrees>
+                  </ParallelBranch>
+                </data>
+              </addData>
+            </vendorElement>
             <comment localId="60" height="0" width="0">
               <position x="0" y="0" />
               <content>
@@ -880,6 +877,27 @@
                   <addData>
                     <data name="http://www.3s-software.com/plcopenxml/ldbranchid" handleUnknown="implementation">
                       <BranchId xmlns="">4</BranchId>
+                    </data>
+                  </addData>
+                </connection>
+                <connection refLocalId="48" formalParameter="">
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/ldbranchid" handleUnknown="implementation">
+                      <BranchId xmlns="">9</BranchId>
+                    </data>
+                  </addData>
+                </connection>
+                <connection refLocalId="52" formalParameter="">
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/ldbranchid" handleUnknown="implementation">
+                      <BranchId xmlns="">9</BranchId>
+                    </data>
+                  </addData>
+                </connection>
+                <connection refLocalId="56" formalParameter="">
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/ldbranchid" handleUnknown="implementation">
+                      <BranchId xmlns="">9</BranchId>
                     </data>
                   </addData>
                 </connection>
