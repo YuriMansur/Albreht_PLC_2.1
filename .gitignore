@@ -23,3 +23,7 @@ out/
 
 # Per-machine настройки путей к CODESYS (у каждой машины свой; шаблон — *.example)
 scripts/env.local.bat
+
+# Python-байткод скриптов (регенерируется интерпретатором)
+__pycache__/
+*.pyc

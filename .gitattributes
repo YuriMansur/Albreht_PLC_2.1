@@ -1,0 +1,5 @@
+# Батники Windows ДОЛЖНЫ быть с CRLF: на LF-концах cmd.exe ломает for/if/goto
+# (символы команд «склеиваются», delayed expansion не работает). Принудительно
+# отдаём *.bat/*.cmd с CRLF при checkout на любой машине.
+*.bat text eol=crlf
+*.cmd text eol=crlf

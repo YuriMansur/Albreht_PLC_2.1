@@ -19,6 +19,7 @@ src_xml/                          # КОД (POU/DUT/GVL) в PLCopen XML — по
 | `export_xml.py` | код проекта → `src_xml/*.xml` (для коммита) |
 | `build.py` | `src_xml/` → шаблон → компиляция → `out/*.projectarchive` |
 | `run_export.bat` / `run_build.bat` | обёртки: находят CODESYS и зовут скрипт |
+| `run_sync.bat` | git-синхронизация: коммит → merge `origin/main` → push (с вердиктом) |
 | `_find_codesys.bat` | автопоиск `CODESYS.exe` и профиля (общий для обёрток) |
 | `install_libs.py` / `run_install_libs.bat` | установка библиотек из `libs/` в Library Repository |
 | `git-hooks/pre-commit` | автоэкспорт перед каждым коммитом |
